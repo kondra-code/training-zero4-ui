@@ -1,0 +1,25 @@
+{
+  "name": "training-zero4-models",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/training-zero4-models/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/training-zero4-models"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "api": {
+      "command": "node tools/scripts/generate-api-types.mjs training-zero4-models",
+      "options": {
+        "host": "http://127.0.0.1:8081"
+      }
+    }
+  },
+  "tags": []
+}

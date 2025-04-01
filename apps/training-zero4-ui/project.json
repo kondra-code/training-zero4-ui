@@ -1,0 +1,115 @@
+{
+  "name": "training-zero4-ui",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/training-zero4-ui/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/training-zero4-ui",
+        "index": "apps/training-zero4-ui/src/index.html",
+        "baseHref": "/",
+        "main": "apps/training-zero4-ui/src/main.ts",
+        "tsConfig": "apps/training-zero4-ui/tsconfig.app.json",
+        "assets": [
+          "apps/training-zero4-ui/src/favicon.ico",
+          "apps/training-zero4-ui/src/assets"
+        ],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "apps/training-zero4-ui/webpack.config.ts"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/training-zero4-ui/src/environments/environment.ts",
+              "with": "apps/training-zero4-ui/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "baseHref": "./"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/react:module-federation-dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "training-zero4-ui:build",
+        "hmr": false,
+        "port": 4200
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "training-zero4-ui:build:development"
+        },
+        "production": {
+          "buildTarget": "training-zero4-ui:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "buildTarget": "training-zero4-ui:build",
+        "watch": false,
+        "port": 4200
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "training-zero4-ui:build:development"
+        },
+        "production": {
+          "buildTarget": "training-zero4-ui:build:production"
+        }
+      }
+    },
+    "kab": {
+      "command": "node tools/scripts/kabtool.mjs build training-zero4-ui && node tools/scripts/kabtool.mjs list training-zero4-ui ",
+      "options": {
+        "outputPath": "dist/archives/packages/training-zero4-ui/",
+        "zipName": "ui.zip",
+        "kabName": "training-zero4-ui.kab"
+      },
+      "dependsOn": ["zip"]
+    },
+    "zip": {
+      "command": "node tools/scripts/archiver.js training-zero4-ui",
+      "options": {
+        "outputPath": "dist/archives/packages/training-zero4-ui/",
+        "zipName": "ui.zip"
+      },
+      "dependsOn": ["build", "descriptor"]
+    },
+    "descriptor": {
+      "command": "node tools/scripts/descriptor.mjs training-zero4-ui",
+      "options": {
+        "outputPath": "dist/apps/training-zero4-ui",
+        "fileName": "descriptor.json"
+      },
+      "dependsOn": ["build"]
+    }
+  },
+  "tags": []
+}
