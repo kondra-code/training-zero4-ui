@@ -1,13 +1,13 @@
 import {
   ErrorBoundaryWithFallback,
   KosTranslationProvider,
-  LoadingMessage,
   getLogLevel,
 } from '@kosdev-code/kos-ui-sdk';
 import log from 'loglevel';
 import { Suspense } from 'react';
 import { Route, HashRouter as Router, Routes } from 'react-router-dom';
 import './app.css';
+import { Loading } from './components/loading/loading';
 import { MainView } from './components/main-view';
 import { KosCoreContextProvider } from './registration';
 
@@ -17,7 +17,7 @@ log.setLevel(level);
 
 const App = () => (
   <ErrorBoundaryWithFallback>
-    <Suspense fallback={<LoadingMessage></LoadingMessage>}>
+    <Suspense fallback={<Loading></Loading>}>
       <KosCoreContextProvider>
         <KosTranslationProvider appContext={'app/system'}>
           <div className="App">
