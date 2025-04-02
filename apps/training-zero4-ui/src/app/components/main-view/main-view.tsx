@@ -1,7 +1,13 @@
 import styled from '@emotion/styled';
-import { DISPENSE_GROUP_BEVERAGE } from '@kosdev-code/kos-dispense-sdk';
+import {
+  DISPENSE_GROUP_BEVERAGE,
+  useDefaultCuiKitLifecycle,
+} from '@kosdev-code/kos-dispense-sdk';
 import { kosComponent, KosLog } from '@kosdev-code/kos-ui-sdk';
 import {
+  Ambient,
+  AreYouThere,
+  Attract,
   BaseContainer,
   BeverageList,
   PourButton,
@@ -18,6 +24,36 @@ log.debug('main-view component loaded');
 const NozzleView = kosComponent(() => {
   // Get the CUI Kit from the context
   const kit = useCuiKitContext();
+
+  // initialize the dispense kit to use the default lifecycle
+  // this includes and idle timeout to handle the case where the user walks away
+  // and an "are you there" timeout to handle the case where the user is present
+  // but not interacting with the dispenser
+  // the idle timeout is set to 15 seconds and the are you there timeout is set to 10 seconds
+  // which means the user will be prompted to confirm they are still present if there are 10
+  // seconds left in the idle timeout
+  const {
+    showAreYouThere,
+    areYouThereCountdown,
+    clearAreYouThere,
+    showAmbientScreen,
+    showAttractScreen,
+    pauseScreenTimer,
+  } = useDefaultCuiKitLifecycle({
+    kit,
+    inactivity: {
+      idleTimeout: 15,
+      areYouThereTimeoutOffset: 10,
+    },
+    pour: {
+      idleTimeout: 10,
+      areYouThereTimeoutOffset: 5,
+    },
+    screens: {
+      attractTimeout: 20,
+      ambientTimeoutOffset: 10,
+    },
+  });
   if (!kit) {
     return null;
   }
@@ -29,8 +65,16 @@ const NozzleView = kosComponent(() => {
   //  In this case are are using a flat list of beverages
   const { beverages, pour, selections, nav } = kit;
   const showBeverages = (nav.currentGroup = DISPENSE_GROUP_BEVERAGE);
+
   return (
     <NozzleContainer>
+      {showAmbientScreen && <Ambient onReset={pauseScreenTimer} />}
+      {showAttractScreen && <Attract onReset={pauseScreenTimer} />}
+      <AreYouThere
+        countdown={areYouThereCountdown}
+        show={showAreYouThere}
+        onClose={clearAreYouThere}
+      ></AreYouThere>
       {showBeverages ? (
         <>
           <BeverageList
