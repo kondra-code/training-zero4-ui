@@ -109,6 +109,11 @@
         "fileName": "descriptor.json"
       },
       "dependsOn": ["build"]
+    },
+    "version": {
+      "command": "node tools/scripts/update-release-version.mjs training-zero4-ui {args.ver}",
+      "options": {},
+      "dependsOn": []
     }
   },
   "tags": []
