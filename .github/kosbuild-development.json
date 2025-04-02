@@ -1,0 +1,13 @@
+{
+  "default_keyset": "prod.kos",
+  "build_cmd": ".github/build.sh",
+
+  "artifacts": [
+    {
+      "id": "training-zero4-ui",
+      "filename": "dist/archives/packages/training-zero4-ui/training-zero4-ui.kab",
+      "artifactstore": "kos-cdn",
+      "marketplace": 1
+    }
+  ]
+}
