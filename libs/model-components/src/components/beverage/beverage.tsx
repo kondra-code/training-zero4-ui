@@ -29,7 +29,7 @@ export const Beverage: React.FunctionComponent<Props> = kosComponent(
       if (onBeverageSelected) {
         onBeverageSelected(beverage);
       }
-    }, [beverage]);
+    }, [beverage, onBeverageSelected]);
     return (
       <BeverageContainer
         onPointerDown={handleBeverageSelected}
@@ -39,7 +39,7 @@ export const Beverage: React.FunctionComponent<Props> = kosComponent(
         secondary={beverage.data.colors?.secondary}
       >
         <BeverageIcon imageUrl={beverage.data?.icon ?? ''} />
-        <BeverageText>{beverage.note ?? 'No Name'}</BeverageText>
+        <BeverageText>{beverage.data.name ?? 'No Name'}</BeverageText>
       </BeverageContainer>
     );
   }
