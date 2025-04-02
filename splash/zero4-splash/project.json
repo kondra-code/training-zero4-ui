@@ -1,0 +1,17 @@
+{
+  "name": "zero4-splash",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "splash/zero4-splash/src",
+  "projectType": "application",
+  "targets": {
+    "splash": {
+      "command": "node tools/scripts/splashtool.mjs zero4-splash",
+      "options": {
+        "outputPath": "dist/archives/packages/zero4-splash/",
+        "layerName": "zero4-splash",
+        "startPath": "start.html"
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-image: url('./assets/splash-screen.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}

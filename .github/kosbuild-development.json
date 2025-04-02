@@ -8,6 +8,13 @@
       "filename": "dist/archives/packages/training-zero4-ui/training-zero4-ui.kab",
       "artifactstore": "kos-cdn",
       "marketplace": 1
+    },
+    {
+      "id": "training-zero4-splash",
+      "filename": "dist/archives/packages/zero4-splash/zero4-splash.kab",
+      "artifactstore": "kos-cdn",
+      "marketplace": 1,
+      "layer": 1
     }
   ]
 }
