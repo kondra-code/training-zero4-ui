@@ -29,6 +29,8 @@ export const AreYouThere: FC<ModalProps> = ({ show, onClose, countdown }) => {
   );
 };
 
+AreYouThere.displayName = 'AreYouThere';
+
 // Styled components using Emotion
 const ModalOverlay = styled.div`
   position: fixed;

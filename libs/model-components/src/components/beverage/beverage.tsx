@@ -45,6 +45,8 @@ export const Beverage: React.FunctionComponent<Props> = kosComponent(
   }
 );
 
+Beverage.displayName = 'Beverage';
+
 /**
  * Styled component that is used to display the beverage icon.
  */

@@ -11,4 +11,5 @@ const [useCuiKitContext, CuiKit] = initializeCuiKit<any, TrainingBeverage, any>(
   }
 );
 
+(CuiKit as any).displayName = 'CuiKit';
 export { CuiKit, useCuiKitContext };

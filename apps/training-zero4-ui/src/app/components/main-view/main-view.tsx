@@ -106,6 +106,8 @@ export const MainView: React.FunctionComponent = kosComponent(() => {
   );
 });
 
+MainView.displayName = 'MainView';
+
 const Main = styled(BaseContainer)`
   height: 1024px;
 `;

@@ -74,4 +74,5 @@ const PourButtonContainer = styled(BaseContainer)<{
   }};
 `;
 
+PourButton.displayName = 'PourButton';
 export default PourButton;
