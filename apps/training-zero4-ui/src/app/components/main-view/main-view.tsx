@@ -58,12 +58,8 @@ const NozzleView = kosComponent(() => {
     return null;
   }
 
-  // Grab the lis of active beverages and the current selection from the kit.
-  //  The CuiKit provides a pour function that can be used to dispense the selected beverage.
-  //  The CUIKit has been optimized for legacy plus dispensers and can support
-  // Brand -> Beverage -> Flavor relationships
-  //  In this case are are using a flat list of beverages
   const { beverages, pour, selections, nav } = kit;
+
   const showBeverages = (nav.currentGroup = DISPENSE_GROUP_BEVERAGE);
 
   return (
