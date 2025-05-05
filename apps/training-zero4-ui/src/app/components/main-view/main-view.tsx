@@ -42,7 +42,7 @@ const NozzleView = kosComponent(() => {
   } = useDefaultCuiKitLifecycle({
     kit,
     inactivity: {
-      idleTimeout: 15,
+      idleTimeout: 60,
       areYouThereTimeoutOffset: 10,
     },
     pour: {
@@ -50,8 +50,8 @@ const NozzleView = kosComponent(() => {
       areYouThereTimeoutOffset: 5,
     },
     screens: {
-      attractTimeout: 20,
-      ambientTimeoutOffset: 10,
+      attractTimeout: 300,
+      ambientTimeoutOffset: 150,
     },
   });
   if (!kit) {
