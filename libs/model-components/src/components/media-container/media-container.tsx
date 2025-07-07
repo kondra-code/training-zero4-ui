@@ -21,8 +21,8 @@ const MediaContainer = styled.div`
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
   z-index: 100;
   font-size: 40px;
   font-family: sans-serif;

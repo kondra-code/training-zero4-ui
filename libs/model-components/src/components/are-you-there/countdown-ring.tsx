@@ -38,7 +38,7 @@ export const CountdownRing: React.FC<CountdownRingProps> = ({
           cx={size / 2}
           cy={size / 2}
           r={radius}
-          stroke="#3498db"
+          stroke="#35A9FC"
           strokeWidth={strokeWidth}
           fill="transparent"
           strokeDasharray={circumference}
@@ -75,14 +75,16 @@ const Message = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 1.5rem;
+  color: #191919;
 `;
 
 const Button = styled.button`
-  background-color: white;
-  color: black;
+  background-color: #191919;
+  color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   font-size: 1.3rem;
+  padding: 16px;
   width: 100px;
   height: 50px;
   z-index: 100;
