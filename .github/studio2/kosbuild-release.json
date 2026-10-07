@@ -1,0 +1,19 @@
+{
+  "default_keyset": "test.demo-tutorials",
+  "prebuild_cmd": ".github/release_version_prebuild.sh",
+  "build_cmd": "./quickbuild.sh",
+
+  "artifacts": [
+    {
+      "id": "training-zero4-ui",
+      "filename": "dist/archives/packages/training-zero4-ui/training-zero4-ui.kab",
+      "artifactstore": "defaultArtifact",
+      "marketplace": 1
+    },
+    {
+      "id": "training-zero4-splash",
+      "filename": "dist/archives/packages/zero4-splash/zero4-splash.kab",
+      "artifactstore": "defaultArtifact"
+    }
+  ]
+}
